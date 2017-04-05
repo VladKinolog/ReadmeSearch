@@ -14,6 +14,8 @@ public class RootLayoutController {
 
 // ссылка на главное приложение
     private Main main;
+    private String path;
+
 
     /**
      * вызывается главным приложением
@@ -39,7 +41,14 @@ public class RootLayoutController {
         // Показываем диалог загрузки файла
         File file = fileChooser.showOpenDialog(main.getPrimaryStage());
 
-        System.out.println(file.getPath());
+        path = file.getPath();
+        int i = path.lastIndexOf("\\");
+        path = path.substring(0,i);
+        main.setPath(path);
+        main.setPersonFilePath(path);
+
+
+        System.out.println(path);
 
 
 
