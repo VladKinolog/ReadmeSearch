@@ -51,11 +51,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="286.0" prefWidth="136.0">
                            <children>
-                              <Label fx:id="choiceFileText" alignment="TOP_LEFT" text="Label" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
+                              <Text fx:id="choiceFileText" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="460.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                            </children>
                         </AnchorPane>
                     </items>

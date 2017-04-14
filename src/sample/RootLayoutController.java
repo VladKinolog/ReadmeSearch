@@ -63,7 +63,7 @@ public class RootLayoutController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Пошук файлів");
         alert.setHeaderText("");
-        alert.setContentText("Програма пошуку файлив");
+        alert.setContentText("Програма пошуку файлів");
 
         alert.showAndWait();
     }

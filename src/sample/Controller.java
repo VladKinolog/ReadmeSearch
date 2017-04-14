@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javafx.scene.text.Text;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 
@@ -20,7 +21,7 @@ public class Controller {
     private TableColumn<DocFileData, String> fileName;
 
     @FXML
-    private Label choiceFileText;
+    private Text choiceFileText;
 
     @FXML
     private TextField searchText;
