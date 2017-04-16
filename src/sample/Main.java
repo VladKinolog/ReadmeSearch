@@ -43,10 +43,10 @@ public class Main extends Application {
             primaryStage.show();
 
             this.path = getPersonFilePath();
-            if (this.path.length() > 0 || this.path != null ) {
-                primaryStage.setTitle("Пошук - " + path);
+            if (this.path == null || this.path.length() == 0) {
+               primaryStage.setTitle("Пошук");
             } else {
-                primaryStage.setTitle("Пошук");
+                primaryStage.setTitle("Пошук - " + path);
             }
 
             RootLayoutController controller = loader.getController();

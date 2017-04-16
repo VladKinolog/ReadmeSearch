@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
@@ -25,6 +26,9 @@ public class Controller {
 
     @FXML
     private TextField searchText;
+
+    @FXML
+    private ProgressIndicator progressIndicator;
 
     //cсылка на главное приложение.
     private Main main;
@@ -71,7 +75,9 @@ public class Controller {
 
     @FXML
     private void onFindButtonClick() throws FileNotFoundException {
+        progressIndicator.setOpacity(1);
         String text = searchText.getText().trim();
+        String [] findText = arrayTextFinder(text);
         System.out.println("Кнопка поиск нажата");
         path = main.getUserPath();
 
@@ -79,14 +85,12 @@ public class Controller {
             File docFile = new File(path);
             // file input stream with docFile
 
-
             File[] files = docFile.listFiles((dir, name) ->  name.toLowerCase().endsWith(".doc"));
             //Runtime.getRuntime().exec("cmd /c start winword " + "\""+ files[2].getCanonicalFile() +"\"");
             main.getFileInPath().clear();
             for (File file : files) {
-
+                int numOfCoincidences = 0;
                 System.out.println(file.getName());
-
 
                 try (FileInputStream finStream = new FileInputStream(file.getAbsolutePath())) {
 
@@ -96,16 +100,16 @@ public class Controller {
 
                     // text stores the each line from the document
                     String fileText = wordExtract.getText();
-                    int i = fileText.toLowerCase().indexOf(text.toLowerCase());
 
-
-                    if (i >= 0) {
-                        main.getFileInPath().add(new DocFileData(file.getName(),fileText));
+                    // для каждого элемента массива если хотя бы 1 строка совпадет значит файл отображается в таблице
+                    for (String fText : findText) {
+                        int i = fileText.toLowerCase().indexOf(fText.toLowerCase().trim());
+                        if (i >= 0) {
+                            numOfCoincidences ++;
+                        }
                     }
-
-
+                    if (numOfCoincidences > 0) main.getFileInPath().add(new DocFileData(file.getName(), fileText));
                     // printing lines from the array
-                    System.out.println(i);
 
                     //closing fileinputstream
                     finStream.close();
@@ -116,6 +120,7 @@ public class Controller {
 
                 System.out.println("коректный текст");
         }
+        progressIndicator.setOpacity(0);
     }
 
     private boolean validText (){
@@ -138,5 +143,14 @@ public class Controller {
 
             return false;
         }
+    }
+
+    private String [] arrayTextFinder (String findText) {
+        return findText.split(",");
+    }
+
+    private Text textSplitter(String [] arrayFindWord, String text, int iteration) {
+
+        return new Text();
     }
 }
