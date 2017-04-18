@@ -30,6 +30,9 @@ public class Controller {
     @FXML
     private ProgressIndicator progressIndicator;
 
+    @FXML
+    private ScrollPane scrollPane;
+
     //cсылка на главное приложение.
     private Main main;
     private String path;
@@ -67,6 +70,8 @@ public class Controller {
         if (docFileData != null){
             fileName.setText(docFileData.getFileName());
             choiceFileText.setText(docFileData.getTextInFile());
+            scrollPane.setHvalue(0.0);
+            scrollPane.setVvalue(0.0);
         } else {
             fileName.setText("");
             choiceFileText.setText("");
