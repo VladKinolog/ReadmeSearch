@@ -57,11 +57,15 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="286.0" prefWidth="136.0">
                            <children>
-                              <TextFlow layoutX="42.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                 <children>
-                                    <Text fx:id="choiceFileText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                 </children>
-                              </TextFlow>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <TextFlow>
+                                       <children>
+                                          <Text fx:id="choiceFileText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                       </children>
+                                    </TextFlow>
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </AnchorPane>
                     </items>
