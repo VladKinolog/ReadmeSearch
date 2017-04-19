@@ -33,9 +33,13 @@ public class Controller {
     @FXML
     private ScrollPane scrollPane;
 
+    @FXML
+    private CheckBox checkBoxFinder;
+
     //cсылка на главное приложение.
     private Main main;
     private String path;
+    private boolean chbox = false;
 
     //Конструктор класса ??
     public Controller() {
@@ -54,6 +58,7 @@ public class Controller {
 
         //добавляем слушателя событий про клику на строку с названием файла
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showTextInFile(newValue));
+        checkBoxFinder.selectedProperty().addListener((observable, oldValue, newValue) -> chbox = !chbox );
     }
 
     public void setMain(Main main) {
@@ -112,8 +117,16 @@ public class Controller {
                         if (i >= 0) {
                             numOfCoincidences ++;
                         }
+
                     }
-                    if (numOfCoincidences > 0) main.getFileInPath().add(new DocFileData(file.getName(), fileText));
+                    if (chbox){
+                        if (numOfCoincidences > 0) main.getFileInPath().add(new DocFileData(file.getName(), fileText));
+                        System.out.println("choiceFileTex isPressed");
+                    } else {
+                        if (numOfCoincidences == findText.length) main.getFileInPath().add(new DocFileData(file.getName(), fileText));
+                        System.out.println("choiceFileTex isRealised");
+                    }
+
                     // printing lines from the array
 
                     //closing fileinputstream

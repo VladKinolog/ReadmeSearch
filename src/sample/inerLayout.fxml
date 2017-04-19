@@ -27,9 +27,14 @@
                   <HBox AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <children>
                         <TextField fx:id="searchText" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="291.0" />
+                        <CheckBox fx:id="checkBoxFinder" mnemonicParsing="false" prefHeight="25.0">
+                           <HBox.margin>
+                              <Insets left="7.0" />
+                           </HBox.margin>
+                        </CheckBox>
                         <Button layoutX="309.0" layoutY="14.0" mnemonicParsing="false" onAction="#onFindButtonClick" prefHeight="25.0" prefWidth="68.0" text="Знайти">
                            <HBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="15.0" />
                            </HBox.margin>
                         </Button>
                         <ProgressIndicator fx:id="progressIndicator" opacity="0.0" prefHeight="14.0" prefWidth="31.0">
