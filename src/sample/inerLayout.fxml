@@ -31,6 +31,9 @@
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
+                           <tooltip>
+                              <Tooltip text="выкл - поиск при совпадении всех ключевых слов, вкл - при нахождении хотя бы одного слова." />
+                           </tooltip>
                         </CheckBox>
                         <Button layoutX="309.0" layoutY="14.0" mnemonicParsing="false" onAction="#onFindButtonClick" prefHeight="25.0" prefWidth="68.0" text="Знайти">
                            <HBox.margin>

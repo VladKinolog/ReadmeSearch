@@ -39,7 +39,7 @@ public class Controller {
     //cсылка на главное приложение.
     private Main main;
     private String path;
-    private boolean chbox = false;
+
 
     //Конструктор класса ??
     public Controller() {
@@ -58,7 +58,7 @@ public class Controller {
 
         //добавляем слушателя событий про клику на строку с названием файла
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showTextInFile(newValue));
-        checkBoxFinder.selectedProperty().addListener((observable, oldValue, newValue) -> chbox = !chbox );
+
     }
 
     public void setMain(Main main) {
@@ -119,7 +119,7 @@ public class Controller {
                         }
 
                     }
-                    if (chbox){
+                    if (checkBoxFinder.isSelected()){
                         if (numOfCoincidences > 0) main.getFileInPath().add(new DocFileData(file.getName(), fileText));
                         System.out.println("choiceFileTex isPressed");
                     } else {
