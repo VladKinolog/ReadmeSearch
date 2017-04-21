@@ -7,9 +7,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 
@@ -111,10 +116,12 @@ public class Controller {
                     // text stores the each line from the document
                     String fileText = wordExtract.getText();
 
+
                     // для каждого элемента массива если хотя бы 1 строка совпадет значит файл отображается в таблице
                     for (String fText : findText) {
                         int i = fileText.toLowerCase().indexOf(fText.toLowerCase().trim());
                         if (i >= 0) {
+                            //fileText = fileText.replaceAll(fText,">>>"+fText+"<<<");
                             numOfCoincidences ++;
                         }
 
@@ -167,8 +174,19 @@ public class Controller {
         return findText.split(",");
     }
 
-    private Text textSplitter(String [] arrayFindWord, String text, int iteration) {
-
-        return new Text();
+    private ArrayList<Text> textSplitter(String [] arryFindWord, String text) {
+        ArrayList<Text> textArrayList= new ArrayList<Text>();
+        String [] str = new String[0];
+        Text t = new Text();
+        t.setFill(Color.RED);
+        for (String s:arryFindWord) {
+            str = text.split(s);
+            for (String string:str) {
+                textArrayList.add(new Text(string));
+                t.setText(s);
+                textArrayList.add(t);
+            }
+        }
+        return textArrayList;
     }
 }
